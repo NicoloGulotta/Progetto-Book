@@ -16,7 +16,7 @@ buttonSearch.addEventListener("click", function (e) {
             data.forEach(book => {
                 if (book.title.toLowerCase().includes(inputTextValue)) {
                     const bookItemBox = document.createElement('div');
-                    bookItemBox.classList.add('book-item', 'card', 'col-6', 'col-md-4', 'col-lg-3', 'm-1');
+                    bookItemBox.classList.add('book-item','bg-dark','text-light', 'card', 'col-6', 'col-md-4', 'col-lg-3', 'm-1', 'p-2');
                     bookItemBox.style.width = '15rem';
                     // bookItemBox.style.height = 'max-content';
 
@@ -37,16 +37,16 @@ buttonSearch.addEventListener("click", function (e) {
                     bookPrice.textContent = 'Price: ' + book.price + '$';
 
                     const bookBtnShoop = document.createElement('button');
-                    bookBtnShoop.classList.add('btn', 'btn-primary');
-                    bookBtnShoop.textContent = 'Aggiungi al carrello';
+                    bookBtnShoop.classList.add('btn', 'btn-light');
+                    bookBtnShoop.textContent = 'Aggiungi';
 
                     bookBtnShoop.addEventListener('click', function (event) {
                         const cartItem = document.createElement('li');
-                        cartItem.classList.add('dropdown-item');
-                        cartItem.textContent = book.title;
+                        let liItem = cartItem;
+                        liItem.classList.add('dropdown-item');
+                        liItem.textContent = book.title;
                         document.getElementById('cart-dropdown').appendChild(cartItem);
                     });
-
                     cardBody.appendChild(bookTitle);
                     cardBody.appendChild(bookPrice);
                     cardBody.appendChild(bookBtnShoop);
@@ -56,6 +56,7 @@ buttonSearch.addEventListener("click", function (e) {
                 }
             });
         })
-
+        
         .catch(error => console.error(error));
-});
+    });
+    
