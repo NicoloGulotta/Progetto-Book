@@ -8,3 +8,17 @@ body {
     background-color: #333366;
     height: max-content;
 }
+
+div.button-container {
+    display: flex;
+    justify-content: flex-end;
+    top: 0;
+    position: sticky;
+    z-index: 2;
+}
+
+button.btn-carrello {
+
+
+    color: #000000;
+}

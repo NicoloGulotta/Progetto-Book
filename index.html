@@ -26,27 +26,28 @@
           </form>
         </li>
       </ul>
-      <!-- Carrello-section -->
-      <div class="btn-group position-relative sticky-top">
-        <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-shopping-cart" style="color: #000000;"></i>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end" id="cart-dropdown" onclick="addToCart()">
-            <!-- Qui andranno le card-selected-->
-        </ul>
-    </div>
-    
-      <div id="book-box" class="container">
-        <div class="row m-4">
-          
-        
-      <!-- Qui creo le card dinamicamente -->
-        
-        </di
-      </div>
-      </div>
-    </div>
   </nav>
+
+  <!-- Carrello-section -->
+  <div class="button-container">
+    <button type="button" class="btn btn-outline-dark dropdown-toggle btn-carrello" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      <i class="fas fa-shopping-cart" style="color: #000000;"></i>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end" id="cart-dropdown">
+      <!-- Qui andranno i titoli selezionati-->
+    </ul>
+  </div>
+
+
+
+  <!-- Sezione card -->
+  <div id="book-box" class="container">
+    <div class="row m-1">
+      <!-- Qui creo le card dinamicamente con js -->
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>

@@ -1,16 +1,17 @@
+let buttonSearch = document.getElementById("starReserch");
+let inputText = document.getElementById("input-text");
 
 //creazione card prendendo dati da API 
 const bookBox = document.getElementById('book-box');
 const row = bookBox.querySelector('.row');
-
-const apiUrl = `https://striveschool-api.herokuapp.com/books`;
+const apiUrl = `https://striveschool-api.herokuapp.com/books?q=${buttonSearch}`;
 fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
         data.forEach(book => {
             const bookItemBox = document.createElement('div');
-            bookItemBox.classList.add('book-item', 'card', 'col-md-4', 'm-1');
-            bookItemBox.style.width = '13rem';
+            bookItemBox.classList.add('book-item', 'card','col-6','col-md-4','col-lg-3' ,'m-1');
+            bookItemBox.style.width = '15rem';
             // bookItemBox.style.height = 'max-content';
 
             const bookItemImg = document.createElement('img');
@@ -39,7 +40,7 @@ fetch(apiUrl)
                 cartItem.textContent = book.title;
                 document.getElementById('cart-dropdown').appendChild(cartItem);
             });
-
+            
             cardBody.appendChild(bookTitle);
             cardBody.appendChild(bookPrice);
             cardBody.appendChild(bookBtnShoop);
@@ -48,5 +49,11 @@ fetch(apiUrl)
             row.appendChild(bookItemBox);
         })
     })
-    .catch(error => console.error(error));
 
+    .catch (error => console.error(error));
+
+    buttonSearch.addEventListener("click", function () {
+    let inputTextValue = inputText.value;
+    searchBooks(inputTextValue);
+    return data.inputTextValue
+    });
