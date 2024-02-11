@@ -46,13 +46,17 @@ buttonSearch.addEventListener("click", function (e) {
                         const cartItem = document.createElement('li');
                         cartItem.classList.add('dropdown-item');
                         cartItem.textContent = book.title;
-                        document.getElementById('cart-dropdown').appendChild(cartItem);
+                        let carrello = document.getElementById('cart-dropdown')
+                        //    if(carrello.children.length === 0)
+                        //    {carrello.style.display='none';}
+                        carrello.appendChild(cartItem);
                         bookBtnShoop.style.display = 'none';
                         bookBtnRemove.style.display = 'block';
                         bookPrice.textContent = 'AGGIUNTO AL CARRELLO !';
-                        bookPrice.style.color='red';
+                        bookPrice.style.color = 'red';
 
                     });
+
 
                     const bookBtnRemove = document.createElement('button');
                     bookBtnRemove.classList.add('btn', 'btn-light');
@@ -67,7 +71,7 @@ buttonSearch.addEventListener("click", function (e) {
                             bookBtnRemove.style.display = 'none';
                             bookBtnShoop.style.display = 'block';
                             bookPrice.textContent = 'Price: ' + book.price + '$';
-                            bookPrice.style.color='';
+                            bookPrice.style.color = '';
 
                         }
                     });
@@ -83,5 +87,7 @@ buttonSearch.addEventListener("click", function (e) {
             });
         })
 
-        .catch(error => alert.error(error));
+        .catch(error => console.error(error));
 });
+
+
