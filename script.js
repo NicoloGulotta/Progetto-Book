@@ -16,7 +16,7 @@ buttonSearch.addEventListener("click", function (e) {
             data.forEach(book => {
                 if (book.title.toLowerCase().includes(inputTextValue)) {
                     const bookItemBox = document.createElement('div');
-                    bookItemBox.classList.add('book-item','bg-dark','text-light', 'card', 'col-6', 'col-md-4', 'col-lg-3', 'm-1', 'p-2');
+                    bookItemBox.classList.add('book-item', 'bg-dark', 'text-light', 'card', 'col-6', 'col-md-4', 'col-lg-3', 'm-1', 'p-2');
                     bookItemBox.style.width = '15rem';
                     // bookItemBox.style.height = 'max-content';
 
@@ -36,27 +36,52 @@ buttonSearch.addEventListener("click", function (e) {
                     bookPrice.classList.add('card-text');
                     bookPrice.textContent = 'Price: ' + book.price + '$';
 
+                    const buttonContainer = document.createElement('div');
+
                     const bookBtnShoop = document.createElement('button');
                     bookBtnShoop.classList.add('btn', 'btn-light');
                     bookBtnShoop.textContent = 'Aggiungi';
 
                     bookBtnShoop.addEventListener('click', function (event) {
                         const cartItem = document.createElement('li');
-                        let liItem = cartItem;
-                        liItem.classList.add('dropdown-item');
-                        liItem.textContent = book.title;
+                        cartItem.classList.add('dropdown-item');
+                        cartItem.textContent = book.title;
                         document.getElementById('cart-dropdown').appendChild(cartItem);
+                        bookBtnShoop.style.display = 'none';
+                        bookBtnRemove.style.display = 'block';
+                        bookPrice.textContent = 'AGGIUNTO AL CARRELLO !';
+                        bookPrice.style.color='red';
+
+                    });
+
+                    const bookBtnRemove = document.createElement('button');
+                    bookBtnRemove.classList.add('btn', 'btn-light');
+                    bookBtnRemove.textContent = 'Rimuovi';
+                    bookBtnRemove.style.display = 'none';
+
+                    bookBtnRemove.addEventListener('click', function (event) {
+                        const cartItem = document.querySelector('.dropdown-item');
+                        if (cartItem) {
+                            document.getElementById('cart-dropdown').removeChild(cartItem);
+                            bookBtnShoop.textContent = 'Aggiungi';
+                            bookBtnRemove.style.display = 'none';
+                            bookBtnShoop.style.display = 'block';
+                            bookPrice.textContent = 'Price: ' + book.price + '$';
+                            bookPrice.style.color='';
+
+                        }
                     });
                     cardBody.appendChild(bookTitle);
                     cardBody.appendChild(bookPrice);
-                    cardBody.appendChild(bookBtnShoop);
+                    cardBody.appendChild(buttonContainer);
+                    buttonContainer.appendChild(bookBtnShoop);
+                    buttonContainer.appendChild(bookBtnRemove);
                     bookItemBox.appendChild(bookItemImg);
                     bookItemBox.appendChild(cardBody);
                     row.appendChild(bookItemBox);
                 }
             });
         })
-        
-        .catch(error => console.error(error));
-    });
-    
+
+        .catch(error => alert.error(error));
+});
