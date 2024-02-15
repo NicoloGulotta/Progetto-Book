@@ -117,11 +117,11 @@ function renderBookItem(book, row) {
     });
 
     bookBtnDetails.addEventListener('click', function (event) {
-        console.log("Dettagli cliccati"); // Controlla se il pulsante è cliccato
+        console.log("Dettagli cliccati"); 
 
         if (cartItem) {
-            const bookId = book._id; // Otteniamo l'ID del libro dal libro corrente
-            console.log("Book ID:", bookId); // Controlla l'ID del libro
+            const bookId = book._id; 
+            console.log("Book ID:", bookId); 
             handleBookDetailsPage(bookId);
         }
     });
